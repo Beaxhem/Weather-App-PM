@@ -9,15 +9,14 @@ import UIKit
 
 class CityDetailViewController: UIViewController {
     
-    
     var weatherModel: WeatherModel?
-    
     
     @IBOutlet weak var weatherTitleLabel: UILabel?
     @IBOutlet weak var cityNameLabel: UILabel?
     @IBOutlet weak var temperatureLabel: UILabel?
     @IBOutlet weak var minTempLabel: UILabel?
     @IBOutlet weak var maxTempLabel: UILabel?
+    
     @IBOutlet weak var forecastCollectionView: UICollectionView?
     @IBOutlet weak var detailsCollectionView: UICollectionView?
     

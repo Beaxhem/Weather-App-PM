@@ -35,6 +35,10 @@
 		88CE03D725BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03D625BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift */; };
 		88CE03DB25BDD049002C11AF /* DetailsCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03DA25BDD049002C11AF /* DetailsCollectionViewDataSource.swift */; };
 		88CE03DE25BDD058002C11AF /* DetailsCollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03DD25BDD058002C11AF /* DetailsCollectionViewDelegateFlowLayout.swift */; };
+		88CE03E325BE0C22002C11AF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03E225BE0C22002C11AF /* SearchViewController.swift */; };
+		88CE03E825BE1120002C11AF /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03E725BE1120002C11AF /* ResultsTableViewCell.swift */; };
+		88CE03EC25BE1199002C11AF /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE03EB25BE1199002C11AF /* ResultsTableViewCell.xib */; };
+		88CE03F025BE2F3B002C11AF /* ResultsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03EF25BE2F3B002C11AF /* ResultsTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,10 @@
 		88CE03D625BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		88CE03DA25BDD049002C11AF /* DetailsCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		88CE03DD25BDD058002C11AF /* DetailsCollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCollectionViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		88CE03E225BE0C22002C11AF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		88CE03E725BE1120002C11AF /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
+		88CE03EB25BE1199002C11AF /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
+		88CE03EF25BE2F3B002C11AF /* ResultsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				887E246C25BAF0F200560B57 /* Application */,
-				885EEB9B25BCB70000D2DE0A /* Database */,
 				885EEB9725BC849900D2DE0A /* Extensions */,
 				885EEBB025BCD53300D2DE0A /* Formatters */,
 				887E246A25BAF0C600560B57 /* Models */,
@@ -179,6 +186,7 @@
 		887E246925BAF0BD00560B57 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				88CE03E125BE0C15002C11AF /* SearchViewController */,
 				885EEB9225BC7D4600D2DE0A /* CityDetailViewController */,
 				887E247025BAF28B00560B57 /* CitiesViewController */,
 			);
@@ -217,6 +225,7 @@
 		887E246D25BAF10200560B57 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				885EEB9B25BCB70000D2DE0A /* Database */,
 				887E245D25BADECD00560B57 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -225,6 +234,7 @@
 		887E246F25BAF1F100560B57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88CE03E625BE1109002C11AF /* ResultsTableViewCell */,
 				88CE03CE25BDCA91002C11AF /* ForecastCollectionViewCell */,
 				885EEB9F25BCC1FD00D2DE0A /* DetailCollectionViewCell */,
 				885EEB7025BB566300D2DE0A /* CityCollectionViewCell */,
@@ -267,6 +277,32 @@
 				88CE03DD25BDD058002C11AF /* DetailsCollectionViewDelegateFlowLayout.swift */,
 			);
 			path = DetailsCollectionView;
+			sourceTree = "<group>";
+		};
+		88CE03E125BE0C15002C11AF /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				88CE03EE25BE2F28002C11AF /* ResultsTableView */,
+				88CE03E225BE0C22002C11AF /* SearchViewController.swift */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		88CE03E625BE1109002C11AF /* ResultsTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				88CE03E725BE1120002C11AF /* ResultsTableViewCell.swift */,
+				88CE03EB25BE1199002C11AF /* ResultsTableViewCell.xib */,
+			);
+			path = ResultsTableViewCell;
+			sourceTree = "<group>";
+		};
+		88CE03EE25BE2F28002C11AF /* ResultsTableView */ = {
+			isa = PBXGroup;
+			children = (
+				88CE03EF25BE2F3B002C11AF /* ResultsTableViewDataSource.swift */,
+			);
+			path = ResultsTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,6 +368,7 @@
 				887E245C25BADECB00560B57 /* Main.storyboard in Resources */,
 				885EEB7625BB570C00D2DE0A /* CityCollectionViewCell.xib in Resources */,
 				885EEBA125BCC21000D2DE0A /* DetailCollectionViewCell.xib in Resources */,
+				88CE03EC25BE1199002C11AF /* ResultsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,7 +380,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				887E245925BADECB00560B57 /* CitiesViewController.swift in Sources */,
+				88CE03F025BE2F3B002C11AF /* ResultsTableViewDataSource.swift in Sources */,
 				885EEBB225BCD55300D2DE0A /* CustomDateFormatter.swift in Sources */,
+				88CE03E825BE1120002C11AF /* ResultsTableViewCell.swift in Sources */,
 				885EEB8E25BC14CF00D2DE0A /* URLProvider.swift in Sources */,
 				88CE03D025BDCAA0002C11AF /* ForecastCollectionViewCell.swift in Sources */,
 				88CE03DE25BDD058002C11AF /* DetailsCollectionViewDelegateFlowLayout.swift in Sources */,
@@ -355,6 +394,7 @@
 				88CE03C825BDC633002C11AF /* Prediction.swift in Sources */,
 				885EEBA925BCD3C000D2DE0A /* Details.swift in Sources */,
 				885EEB9425BC7D5800D2DE0A /* CityDetailViewController.swift in Sources */,
+				88CE03E325BE0C22002C11AF /* SearchViewController.swift in Sources */,
 				885EEBAD25BCD3F800D2DE0A /* TemperatureFormatter.swift in Sources */,
 				885EEB8425BB5F1200D2DE0A /* NetworkService.swift in Sources */,
 				887E245525BADECB00560B57 /* AppDelegate.swift in Sources */,

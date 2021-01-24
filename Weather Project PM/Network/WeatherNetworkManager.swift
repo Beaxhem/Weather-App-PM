@@ -8,7 +8,7 @@
 import Foundation
 
 protocol WeatherNetworkManager {
-    func loadCurrentWeather(byCityname city: String, completion: @escaping(Result<WeatherModel, Error>) -> Void)
+    func loadCurrentWeather(byCityname city: String, completion: @escaping(Result<OneCityQuery, Error>) -> Void)
     func loadCurrentWeatherForMultipleCities(citiesIDs: [String], completion: @escaping (Result<[WeatherModel], Error>) -> Void)
 }
 
@@ -67,7 +67,7 @@ class WeatherManager: WeatherNetworkManager {
         }
     }
     
-    func loadCurrentWeather(byCityname city: String, completion: @escaping (Result<WeatherModel, Error>) -> Void) {
+    func loadCurrentWeather(byCityname city: String, completion: @escaping (Result<OneCityQuery, Error>) -> Void) {
         guard let url = urlProvider.getCurrentWeatherLink(cityName: city) else {
             return
         }
@@ -79,7 +79,7 @@ class WeatherManager: WeatherNetworkManager {
                 completion(.failure(error))
             case .success(let data):
                 do {
-                    let weather = try self.jsonDecoder.decode(WeatherModel.self, from: data)
+                    let weather = try self.jsonDecoder.decode(OneCityQuery.self, from: data)
                     
                     completion(.success(weather))
                 } catch {

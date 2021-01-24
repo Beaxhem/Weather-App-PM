@@ -23,7 +23,15 @@ class CitiesViewController: UIViewController {
         citiesCollectionView.delegate = self
         citiesCollectionView.register(UINib(nibName: CityCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: CityCollectionViewCell.id)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addButtonPressed))
+        
         fetchData()     
+    }
+    
+    @objc private func addButtonPressed() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") else { return }
+        
+        navigationController?.present(vc, animated: true, completion: nil)
     }
     
     private func fetchData() {

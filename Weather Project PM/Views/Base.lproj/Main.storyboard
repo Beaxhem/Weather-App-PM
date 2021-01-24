@@ -62,6 +62,71 @@
             </objects>
             <point key="canvasLocation" x="492.75362318840581" y="24.776785714285712"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="CGz-Fh-fsb">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="oBo-aO-zmf" customClass="SearchViewController" customModule="Weather_Project_PM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LNl-UY-kid">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AAw-0m-dIR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search cities" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iTN-wv-coN">
+                                        <rect key="frame" x="15" y="15" width="287" height="35"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8X1-kA-K95">
+                                        <rect key="frame" x="310" y="15" width="50" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="eo6-u9-HkF"/>
+                                        </constraints>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="done" destination="oBo-aO-zmf" eventType="touchUpInside" id="g5f-lN-oaf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="quaternaryLabelColor"/>
+                                <constraints>
+                                    <constraint firstItem="8X1-kA-K95" firstAttribute="leading" secondItem="iTN-wv-coN" secondAttribute="trailing" constant="8" symbolic="YES" id="904-5i-3Jq"/>
+                                    <constraint firstItem="8X1-kA-K95" firstAttribute="top" secondItem="AAw-0m-dIR" secondAttribute="top" constant="15" id="DcG-uv-SFN"/>
+                                    <constraint firstAttribute="bottom" secondItem="8X1-kA-K95" secondAttribute="bottom" constant="15" id="Jdv-KJ-hAb"/>
+                                    <constraint firstItem="iTN-wv-coN" firstAttribute="leading" secondItem="AAw-0m-dIR" secondAttribute="leading" constant="15" id="Xr7-ED-Tvv"/>
+                                    <constraint firstItem="iTN-wv-coN" firstAttribute="top" secondItem="AAw-0m-dIR" secondAttribute="top" constant="15" id="sF4-mJ-1KE"/>
+                                    <constraint firstAttribute="trailing" secondItem="8X1-kA-K95" secondAttribute="trailing" constant="15" id="tQ3-tT-yDv"/>
+                                    <constraint firstAttribute="bottom" secondItem="iTN-wv-coN" secondAttribute="bottom" constant="15" id="tdM-Dj-yLa"/>
+                                    <constraint firstAttribute="height" constant="65" id="xMm-yh-k3l"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HMP-ap-BwX">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WWP-Un-Ir5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WWP-Un-Ir5" firstAttribute="trailing" secondItem="HMP-ap-BwX" secondAttribute="trailing" id="1WO-Vy-aRh"/>
+                            <constraint firstItem="HMP-ap-BwX" firstAttribute="top" secondItem="AAw-0m-dIR" secondAttribute="bottom" id="4ay-Ib-aPa"/>
+                            <constraint firstItem="WWP-Un-Ir5" firstAttribute="bottom" secondItem="HMP-ap-BwX" secondAttribute="bottom" id="K01-NE-OvE"/>
+                            <constraint firstItem="AAw-0m-dIR" firstAttribute="trailing" secondItem="WWP-Un-Ir5" secondAttribute="trailing" id="M8r-KE-TA5"/>
+                            <constraint firstItem="AAw-0m-dIR" firstAttribute="leading" secondItem="LNl-UY-kid" secondAttribute="leading" id="N6R-nC-wFD"/>
+                            <constraint firstItem="AAw-0m-dIR" firstAttribute="top" secondItem="WWP-Un-Ir5" secondAttribute="top" id="QXl-BO-VNa"/>
+                            <constraint firstItem="HMP-ap-BwX" firstAttribute="leading" secondItem="WWP-Un-Ir5" secondAttribute="leading" id="ZZZ-cj-6mm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="iTN-wv-coN" id="Vzl-up-xaO"/>
+                        <outlet property="resultsTableView" destination="HMP-ap-BwX" id="NK2-pv-baQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="97i-XJ-dwI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="492" y="743.47826086956525"/>
+        </scene>
         <!--City Detail View Controller-->
         <scene sceneID="a5M-yK-pZF">
             <objects>
@@ -173,10 +238,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c34-gW-UdJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="492" y="728.18590704647681"/>
+            <point key="canvasLocation" x="1335" y="25"/>
         </scene>
     </scenes>
     <resources>
+        <systemColor name="quaternaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.17999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

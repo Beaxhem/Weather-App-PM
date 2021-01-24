@@ -7,6 +7,14 @@
 
 import Foundation
 
+struct OneCityQuery: Codable {
+    var coord: Coords
+    var weather: [Weather]
+    var main: Temperature
+    var wind: Wind
+    var name: String
+}
+
 class MultipleCitiesQuery: Codable {
     var list: [WeatherModel]
 }
@@ -58,7 +66,7 @@ struct WeatherMeta: Codable {
 }
 
 struct Wind: Codable {
-    var speed: Int
+    var speed: Float
     var degrees: Int
     
     private let directions: [Int: String] = [

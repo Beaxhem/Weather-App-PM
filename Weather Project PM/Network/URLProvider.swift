@@ -15,21 +15,22 @@ protocol URLProvider {
 
 class OpenWeatherURLProvider: URLProvider {
     private let apiKey = Secrets.openWeatherAPIKey
+    private let host = "https://api.openweathermap.org/data/2.5"
     
     func getCurrentWeatherLink(cityName: String) -> URL? {
-        let api = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)"
+        let api = host + "/weather?q=\(cityName)&units=metric&appid=\(apiKey)"
         
         return encodeURL(rawURL: api)
     }
     
     func getCurrentWeatherLinkForMultipleCities(citiesIDs: [String]) -> URL? {
-        let api = "https://api.openweathermap.org/data/2.5/group?id=\(citiesIDs.joined(separator: ","))&units=metric&appid=\(apiKey)"
+        let api = host + "/group?id=\(citiesIDs.joined(separator: ","))&units=metric&appid=\(apiKey)"
         
         return encodeURL(rawURL: api)
     }
     
     func getWeatherPredictionLink(with coords: Coords) -> URL? {
-        let api = "https://api.openweathermap.org/data/2.5/onecall?lat=\(coords.lat)&lon=\(coords.lon)&exclude=current,minutely,hourly,alerts&appid=\(apiKey)&units=metric"
+        let api = host + "/onecall?lat=\(coords.lat)&lon=\(coords.lon)&exclude=current,minutely,hourly,alerts&units=metric&appid=\(apiKey)"
         
         return encodeURL(rawURL: api)
     }
