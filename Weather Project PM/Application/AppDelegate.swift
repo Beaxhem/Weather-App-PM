@@ -12,9 +12,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let defaultCitiesIDs = ["703448", "709930"]
-        
-        UserDefaults.standard.set(defaultCitiesIDs, forKey: "citiesIDs")
+        let key = "citiesIDs"
+        if UserDefaults.standard.stringArray(forKey: key) == nil {
+            let defaultCitiesIDs = ["703448", "709930"]
+            
+            UserDefaults.standard.set(defaultCitiesIDs, forKey: key)
+        }
         
         return true
     }

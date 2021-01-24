@@ -13,6 +13,8 @@ struct OneCityQuery: Codable {
     var main: Temperature
     var wind: Wind
     var name: String
+    var id: Int
+    var sys: WeatherMeta
 }
 
 class MultipleCitiesQuery: Codable {
@@ -60,9 +62,9 @@ struct Temperature: Codable {
 }
 
 struct WeatherMeta: Codable {
-    var timezone: Int
     var sunrise: Int
     var sunset: Int
+    var country: String
 }
 
 struct Wind: Codable {

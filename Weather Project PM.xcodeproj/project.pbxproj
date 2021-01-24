@@ -39,6 +39,8 @@
 		88CE03E825BE1120002C11AF /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03E725BE1120002C11AF /* ResultsTableViewCell.swift */; };
 		88CE03EC25BE1199002C11AF /* ResultsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE03EB25BE1199002C11AF /* ResultsTableViewCell.xib */; };
 		88CE03F025BE2F3B002C11AF /* ResultsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03EF25BE2F3B002C11AF /* ResultsTableViewDataSource.swift */; };
+		88CE03F425BE371D002C11AF /* IDsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03F325BE371D002C11AF /* IDsProvider.swift */; };
+		88CE03F725BE3D1C002C11AF /* SearchViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03F625BE3D1C002C11AF /* SearchViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		88CE03E725BE1120002C11AF /* ResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCell.swift; sourceTree = "<group>"; };
 		88CE03EB25BE1199002C11AF /* ResultsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsTableViewCell.xib; sourceTree = "<group>"; };
 		88CE03EF25BE2F3B002C11AF /* ResultsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewDataSource.swift; sourceTree = "<group>"; };
+		88CE03F325BE371D002C11AF /* IDsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDsProvider.swift; sourceTree = "<group>"; };
+		88CE03F625BE3D1C002C11AF /* SearchViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				885EEB9C25BCB70A00D2DE0A /* DatabaseManager.swift */,
+				88CE03F325BE371D002C11AF /* IDsProvider.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 			children = (
 				88CE03EE25BE2F28002C11AF /* ResultsTableView */,
 				88CE03E225BE0C22002C11AF /* SearchViewController.swift */,
+				88CE03F625BE3D1C002C11AF /* SearchViewControllerDelegate.swift */,
 			);
 			path = SearchViewController;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887E245925BADECB00560B57 /* CitiesViewController.swift in Sources */,
+				88CE03F425BE371D002C11AF /* IDsProvider.swift in Sources */,
 				88CE03F025BE2F3B002C11AF /* ResultsTableViewDataSource.swift in Sources */,
 				885EEBB225BCD55300D2DE0A /* CustomDateFormatter.swift in Sources */,
 				88CE03E825BE1120002C11AF /* ResultsTableViewCell.swift in Sources */,
@@ -392,6 +399,7 @@
 				885EEB7325BB567E00D2DE0A /* CityCollectionViewCell.swift in Sources */,
 				88CE03D725BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift in Sources */,
 				88CE03C825BDC633002C11AF /* Prediction.swift in Sources */,
+				88CE03F725BE3D1C002C11AF /* SearchViewControllerDelegate.swift in Sources */,
 				885EEBA925BCD3C000D2DE0A /* Details.swift in Sources */,
 				885EEB9425BC7D5800D2DE0A /* CityDetailViewController.swift in Sources */,
 				88CE03E325BE0C22002C11AF /* SearchViewController.swift in Sources */,

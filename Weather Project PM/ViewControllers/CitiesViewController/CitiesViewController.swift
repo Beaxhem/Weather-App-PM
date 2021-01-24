@@ -29,13 +29,15 @@ class CitiesViewController: UIViewController {
     }
     
     @objc private func addButtonPressed() {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") else { return }
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else { return }
         
-        navigationController?.present(vc, animated: true, completion: nil)
+        vc.delegate = self
+        
+        navigationController?.present(vc, animated: true)
     }
     
     private func fetchData() {
-        DatabaseManager.shared.fetchWeatherData { [weak self] in
+        database.fetchWeatherData { [weak self] in
             self?.citiesCollectionView?.reloadData()
         }
     }
@@ -77,5 +79,12 @@ extension CitiesViewController: UICollectionViewDataSource {
         cell.configure(with: weather)
         
         return cell
+    }
+}
+
+extension CitiesViewController: SearchViewControllerDelegate {
+    func onExit() {
+        let lastIndex = database.weatherData.count - 1
+        citiesCollectionView?.insertItems(at: [IndexPath(row: lastIndex, section: 0)])
     }
 }

@@ -11,18 +11,15 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var resultsTableView: UITableView?
     @IBOutlet weak var cityTextField: UITextField?
     
+    var delegate: SearchViewControllerDelegate?
     var searchTimer: Timer?
-    
-    var results: [OneCityQuery] = [] {
-        didSet {
-            self.resultsTableView?.reloadData()
-        }
-    }
+    let resultsDataSource = ResultsTableViewDataSource()
     
     override func viewDidLoad() {
         cityTextField?.addTarget(self, action: #selector(textFieldDidEditingChanged(_:)), for: .editingChanged)
         
-        resultsTableView?.dataSource = self
+        resultsTableView?.dataSource = resultsDataSource
+        resultsTableView?.delegate = self
         resultsTableView?.register(UINib(nibName: ResultsTableViewCell.id, bundle: nil), forCellReuseIdentifier: ResultsTableViewCell.id)
     }
     
@@ -36,9 +33,10 @@ class SearchViewController: UIViewController {
     }
     
     @objc private func searchForKeyword(_ timer: Timer) {
-        guard let query = timer.userInfo as? String, query != "" else { return }
+        guard var query = timer.userInfo as? String, query != "" else { return }
         
-        results = []
+        query = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        resultsDataSource.results = []
         
         WeatherManager.shared.loadCurrentWeather(byCityname: query) { [weak self] res in
             switch res {
@@ -46,31 +44,30 @@ class SearchViewController: UIViewController {
                 print(error)
             case .success(let request):
                 print("Request")
-                self?.results = [request]
+                self?.resultsDataSource.results = [request]
+                self?.resultsTableView?.reloadData()
             }
         }
     }
-    
+}
+
+// Exit functionality
+extension SearchViewController {
     @IBAction func done() {
-        self.dismiss(animated: true, completion: nil)
+        delegate?.onExit()
+        
+        self.dismiss(animated: true)
     }
 }
 
-extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ResultsTableViewCell.id) as? ResultsTableViewCell else {
-            fatalError()
+// MARK: -UITableViewDelegate
+extension SearchViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let result = resultsDataSource.results[indexPath.item]
+        
+        DatabaseManager.shared.addCityToFavourites(cityID: "\(result.id)") { [weak self] in
+            self?.done()
         }
         
-        let result = results[indexPath.item]
-        cell.configure(with: result)
-        
-        return cell
     }
-    
-    
 }
