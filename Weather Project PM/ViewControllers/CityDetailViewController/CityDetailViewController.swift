@@ -8,10 +8,10 @@
 import UIKit
 
 class CityDetailViewController: UIViewController {
-    var cellHeight: CGFloat = 50
+    
     
     var weatherModel: WeatherModel?
-    var details: [DetailsModel] = []
+    
     
     @IBOutlet weak var weatherTitleLabel: UILabel?
     @IBOutlet weak var cityNameLabel: UILabel?
@@ -23,6 +23,9 @@ class CityDetailViewController: UIViewController {
     
     private let forecastDataSource = ForecastCollectionViewDataSource()
     private let forecaseDelegate = ForecastCollectionViewDelegate()
+    
+    private let detailsDataSource = DetailsCollectionViewDataSource()
+    private let detailsDelegate = DetailsCollectionViewDelegateFlowLayout()
     
     private let tempFormatter = RoundTemperatureFormatter()
     private let dateFormatter = HoursDateFormatter()
@@ -59,7 +62,7 @@ class CityDetailViewController: UIViewController {
         let sunriseDate = Date(timeIntervalSince1970: Double(sys.sunrise))
         let sunsetDate = Date(timeIntervalSince1970: Double(sys.sunset))
         
-        details = [
+        detailsDataSource.details = [
             DetailsModel(title: "Sunrise", value: "\(dateFormatter.string(from: sunriseDate))"),
             DetailsModel(title: "Sunset", value: "\(dateFormatter.string(from: sunsetDate))"),
             DetailsModel(title: "Humidity", value: "\(weatherModel.main.humidity)%"),
@@ -67,8 +70,8 @@ class CityDetailViewController: UIViewController {
             DetailsModel(title: "Feels like", value: tempFormatter.string(temp: weatherModel.main.feelsLike))
         ]
         
-        detailsCollectionView?.dataSource = self
-        detailsCollectionView?.delegate = self
+        detailsCollectionView?.dataSource = detailsDataSource
+        detailsCollectionView?.delegate = detailsDelegate
         detailsCollectionView?.register(UINib(nibName: DetailCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DetailCollectionViewCell.id)
     }
     
@@ -77,46 +80,14 @@ class CityDetailViewController: UIViewController {
             return
         }
         
-        DispatchQueue.main.async {
-            WeatherManager.shared.loadWeatherPrediction(by: weatherModel) {[weak self] (res) in
-                switch res {
-                case .failure(let error):
-                    print(error)
-                case .success(let predictionQuery):
-                    print(predictionQuery)
-                    self?.forecastDataSource.predictions = predictionQuery.daily
-                    self?.forecastCollectionView?.reloadData()
-                }
+        WeatherManager.shared.loadWeatherPrediction(by: weatherModel) {[weak self] (res) in
+            switch res {
+            case .failure(let error):
+                print(error)
+            case .success(let predictionQuery):
+                self?.forecastDataSource.predictions = predictionQuery.daily
+                self?.forecastCollectionView?.reloadData()
             }
         }
-    }
-}
-
-// MARK: -UICollectionViewDelegateFlowLayout
-extension CityDetailViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 2, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
-// MARK: -UICollectionViewDataSource
-extension CityDetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return details.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.id, for: indexPath) as? DetailCollectionViewCell else {
-            fatalError()
-        }
-        
-        let detail = details[indexPath.item]
-        cell.configure(with: detail)
-        
-        return cell
     }
 }

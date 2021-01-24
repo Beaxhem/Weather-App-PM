@@ -24,7 +24,7 @@ class OpenWeatherURLProvider: URLProvider {
     
     func getCurrentWeatherLinkForMultipleCities(citiesIDs: [String]) -> URL? {
         let api = "https://api.openweathermap.org/data/2.5/group?id=\(citiesIDs.joined(separator: ","))&units=metric&appid=\(apiKey)"
-        print(api)
+        
         return encodeURL(rawURL: api)
     }
     
