@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CityDetailViewController" customModule="Weather_Project_PM" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ForecastCollectionViewCell" customModule="Weather_Project_PM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="208" height="121"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i35-j4-OZy">
+                    <rect key="frame" x="55.5" y="37" width="97" height="47"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Is-tY-JsX">
+                            <rect key="frame" x="0.0" y="0.0" width="97" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdR-SX-v1k">
+                            <rect key="frame" x="0.0" y="26" width="97" height="21"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEO-n5-UA9">
+                                    <rect key="frame" x="55" y="0.0" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgq-1O-weJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="30" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="Jgq-1O-weJ" secondAttribute="bottom" id="1gK-j4-OW6"/>
+                                <constraint firstItem="Jgq-1O-weJ" firstAttribute="leading" secondItem="pdR-SX-v1k" secondAttribute="leading" id="4dC-Zf-H1I"/>
+                                <constraint firstAttribute="bottom" secondItem="uEO-n5-UA9" secondAttribute="bottom" id="CR8-OW-e2F"/>
+                                <constraint firstAttribute="trailing" secondItem="uEO-n5-UA9" secondAttribute="trailing" id="E0e-SG-ftS"/>
+                                <constraint firstItem="Jgq-1O-weJ" firstAttribute="top" secondItem="pdR-SX-v1k" secondAttribute="top" id="J6k-lA-Sbs"/>
+                                <constraint firstItem="uEO-n5-UA9" firstAttribute="leading" secondItem="Jgq-1O-weJ" secondAttribute="trailing" constant="25" id="i8w-mB-7Ju"/>
+                                <constraint firstItem="uEO-n5-UA9" firstAttribute="top" secondItem="pdR-SX-v1k" secondAttribute="top" id="xkg-yf-DMg"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="pdR-SX-v1k" secondAttribute="bottom" id="9Ut-1l-GyX"/>
+                        <constraint firstItem="8Is-tY-JsX" firstAttribute="top" secondItem="i35-j4-OZy" secondAttribute="top" id="BH5-P5-MqX"/>
+                        <constraint firstItem="pdR-SX-v1k" firstAttribute="centerX" secondItem="i35-j4-OZy" secondAttribute="centerX" id="NW5-T8-RjJ"/>
+                        <constraint firstAttribute="trailing" secondItem="pdR-SX-v1k" secondAttribute="trailing" id="ZX6-Ro-Q1r"/>
+                        <constraint firstItem="pdR-SX-v1k" firstAttribute="leading" secondItem="i35-j4-OZy" secondAttribute="leading" id="gw9-se-tUY"/>
+                        <constraint firstItem="8Is-tY-JsX" firstAttribute="leading" secondItem="i35-j4-OZy" secondAttribute="leading" id="oPU-iv-tfx"/>
+                        <constraint firstItem="pdR-SX-v1k" firstAttribute="top" secondItem="8Is-tY-JsX" secondAttribute="bottom" constant="5" id="qMt-ip-sU1"/>
+                        <constraint firstAttribute="trailing" secondItem="8Is-tY-JsX" secondAttribute="trailing" id="qtd-gX-RJc"/>
+                        <constraint firstItem="8Is-tY-JsX" firstAttribute="centerX" secondItem="i35-j4-OZy" secondAttribute="centerX" id="v7s-Lc-BRl"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="i35-j4-OZy" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0W3-ed-YNz"/>
+                <constraint firstItem="i35-j4-OZy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="XRH-50-8eH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateLabel" destination="8Is-tY-JsX" id="EKM-ZT-w9e"/>
+                <outlet property="dayTempLabel" destination="Jgq-1O-weJ" id="IQq-nr-p2J"/>
+                <outlet property="nightTempLabel" destination="uEO-n5-UA9" id="RyU-Mf-VIc"/>
+            </connections>
+            <point key="canvasLocation" x="-172.46376811594203" y="-199.88839285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

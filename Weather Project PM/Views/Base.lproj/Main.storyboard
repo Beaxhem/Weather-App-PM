@@ -116,9 +116,23 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d1w-ey-coD">
-                                <rect key="frame" x="0.0" y="214" width="375" height="453"/>
+                                <rect key="frame" x="0.0" y="302" width="375" height="365"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2O2-j5-acC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="epm-Rm-5Xs">
+                                <rect key="frame" x="0.0" y="202" width="375" height="90"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="Jev-uA-PG2"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V2r-Ve-tKx">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -130,6 +144,8 @@
                         <viewLayoutGuide key="safeArea" id="bEk-fz-tdc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="d1w-ey-coD" firstAttribute="top" secondItem="epm-Rm-5Xs" secondAttribute="bottom" constant="10" id="0EX-DC-4Vv"/>
+                            <constraint firstItem="epm-Rm-5Xs" firstAttribute="trailing" secondItem="bEk-fz-tdc" secondAttribute="trailing" id="4ZX-H7-yf6"/>
                             <constraint firstItem="9f1-6T-P2k" firstAttribute="centerX" secondItem="bFS-nZ-vD6" secondAttribute="centerX" id="8Ak-J7-wL8"/>
                             <constraint firstItem="P3R-Yg-SPx" firstAttribute="top" secondItem="s99-dt-EFe" secondAttribute="bottom" constant="8" symbolic="YES" id="CAd-nJ-aGw"/>
                             <constraint firstItem="P3R-Yg-SPx" firstAttribute="centerX" secondItem="bFS-nZ-vD6" secondAttribute="centerX" id="CYP-cM-ziE"/>
@@ -138,15 +154,17 @@
                             <constraint firstItem="jab-w1-1Sf" firstAttribute="centerX" secondItem="bFS-nZ-vD6" secondAttribute="centerX" id="I3n-an-AyV"/>
                             <constraint firstItem="bEk-fz-tdc" firstAttribute="bottom" secondItem="d1w-ey-coD" secondAttribute="bottom" id="eGL-f0-zOW"/>
                             <constraint firstItem="9f1-6T-P2k" firstAttribute="top" secondItem="P3R-Yg-SPx" secondAttribute="bottom" constant="5" id="g5R-Vs-5Zv"/>
-                            <constraint firstItem="d1w-ey-coD" firstAttribute="top" secondItem="9f1-6T-P2k" secondAttribute="bottom" constant="20" id="gDf-C0-6IN"/>
+                            <constraint firstItem="epm-Rm-5Xs" firstAttribute="leading" secondItem="bEk-fz-tdc" secondAttribute="leading" id="m7D-LT-66g"/>
                             <constraint firstItem="bEk-fz-tdc" firstAttribute="trailing" secondItem="d1w-ey-coD" secondAttribute="trailing" id="pXH-Jt-cyo"/>
                             <constraint firstItem="d1w-ey-coD" firstAttribute="leading" secondItem="bEk-fz-tdc" secondAttribute="leading" id="pnb-bE-9m6"/>
+                            <constraint firstItem="epm-Rm-5Xs" firstAttribute="top" secondItem="9f1-6T-P2k" secondAttribute="bottom" constant="8" symbolic="YES" id="tRl-J8-lc1"/>
                             <constraint firstItem="s99-dt-EFe" firstAttribute="centerX" secondItem="bFS-nZ-vD6" secondAttribute="centerX" id="uAh-5t-WtJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cityNameLabel" destination="s99-dt-EFe" id="M4W-gd-BEb"/>
                         <outlet property="detailsCollectionView" destination="d1w-ey-coD" id="RSY-lL-OxF"/>
+                        <outlet property="forecastCollectionView" destination="epm-Rm-5Xs" id="VID-Y3-WFD"/>
                         <outlet property="maxTempLabel" destination="6Pu-ct-1SC" id="lmR-8R-2zy"/>
                         <outlet property="minTempLabel" destination="I7g-TQ-IX1" id="hUS-aY-mMa"/>
                         <outlet property="temperatureLabel" destination="P3R-Yg-SPx" id="IUk-ge-WfW"/>

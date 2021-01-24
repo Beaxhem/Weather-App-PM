@@ -17,6 +17,7 @@ class WeatherManager: WeatherNetworkManager {
     
     var networkService: Networking
     var urlProvider: URLProvider
+    var jsonDecoder = JSONDecoder()
     
     init(networkService: Networking = URLSessionNetworkService(), urlProvider: URLProvider = OpenWeatherURLProvider()) {
         self.networkService = networkService
@@ -28,14 +29,37 @@ class WeatherManager: WeatherNetworkManager {
             return
         }
         
-        networkService.dataTask(with: url) { (res) in
+        networkService.dataTask(with: url) { [weak self] (res) in
+            guard let self = self else { return }
             switch res {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let data):
                 do {
-                    let weatherData = try JSONDecoder().decode(MultipleCitiesQuery.self, from: data)
+                    let weatherData = try self.jsonDecoder.decode(MultipleCitiesQuery.self, from: data)
                     completion(.success(weatherData.list))
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func loadWeatherPrediction(by weather: WeatherModel, completion: @escaping(Result<PredictionQuery, Error>) -> Void) {
+        guard let url = urlProvider.getWeatherPredictionLink(with: weather.coord) else {
+            return
+        }
+        
+        networkService.dataTask(with: url) { [weak self] (res) in
+            guard let self = self else { return }
+            
+            switch res {
+            case .failure(let error):
+                completion(.failure(error))
+            case .success(let data):
+                do {
+                    let prediction = try self.jsonDecoder.decode(PredictionQuery.self, from: data)
+                    completion(.success(prediction))
                 } catch {
                     completion(.failure(error))
                 }
@@ -48,13 +72,14 @@ class WeatherManager: WeatherNetworkManager {
             return
         }
         
-        networkService.dataTask(with: url) { res in
+        networkService.dataTask(with: url) { [weak self] (res) in
+            guard let self = self else { return }
             switch res {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let data):
                 do {
-                    let weather = try JSONDecoder().decode(WeatherModel.self, from: data)
+                    let weather = try self.jsonDecoder.decode(WeatherModel.self, from: data)
                     
                     completion(.success(weather))
                 } catch {

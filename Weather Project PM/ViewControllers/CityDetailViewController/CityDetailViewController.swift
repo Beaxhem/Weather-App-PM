@@ -18,10 +18,14 @@ class CityDetailViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel?
     @IBOutlet weak var minTempLabel: UILabel?
     @IBOutlet weak var maxTempLabel: UILabel?
+    @IBOutlet weak var forecastCollectionView: UICollectionView?
     @IBOutlet weak var detailsCollectionView: UICollectionView?
     
-    let tempFormatter = RoundTemperatureFormatter()
-    var dateFormatter = HoursDateFormatter()
+    private let forecastDataSource = ForecastCollectionViewDataSource()
+    private let forecaseDelegate = ForecastCollectionViewDelegate()
+    
+    private let tempFormatter = RoundTemperatureFormatter()
+    private let dateFormatter = HoursDateFormatter()
     
     override func viewDidLoad() {
         guard let weatherModel = weatherModel else {
@@ -34,10 +38,18 @@ class CityDetailViewController: UIViewController {
         minTempLabel?.text = "from \(tempFormatter.string(temp: weatherModel.main.minTemp))"
         maxTempLabel?.text = "to \(tempFormatter.string(temp: weatherModel.main.maxTemp))"
         
-        setUpDetails()
+        setUpForecastView()
+        setUpDetailsView()
+        loadForecast()
     }
     
-    func setUpDetails() {
+    func setUpForecastView() {
+        forecastCollectionView?.dataSource = forecastDataSource
+        forecastCollectionView?.delegate = forecaseDelegate
+        forecastCollectionView?.register(UINib(nibName: ForecastCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: ForecastCollectionViewCell.id)
+    }
+    
+    func setUpDetailsView() {
         guard let weatherModel = weatherModel else {
             return
         }
@@ -60,7 +72,24 @@ class CityDetailViewController: UIViewController {
         detailsCollectionView?.register(UINib(nibName: DetailCollectionViewCell.id, bundle: nil), forCellWithReuseIdentifier: DetailCollectionViewCell.id)
     }
     
-    
+    func loadForecast() {
+        guard let weatherModel = weatherModel else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            WeatherManager.shared.loadWeatherPrediction(by: weatherModel) {[weak self] (res) in
+                switch res {
+                case .failure(let error):
+                    print(error)
+                case .success(let predictionQuery):
+                    print(predictionQuery)
+                    self?.forecastDataSource.predictions = predictionQuery.daily
+                    self?.forecastCollectionView?.reloadData()
+                }
+            }
+        }
+    }
 }
 
 // MARK: -UICollectionViewDelegateFlowLayout

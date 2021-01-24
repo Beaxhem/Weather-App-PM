@@ -10,10 +10,12 @@ import Foundation
 protocol URLProvider {
     func getCurrentWeatherLink(cityName: String) -> URL?
     func getCurrentWeatherLinkForMultipleCities(citiesIDs: [String]) -> URL?
+    func getWeatherPredictionLink(with coords: Coords) -> URL?
 }
 
 class OpenWeatherURLProvider: URLProvider {
-    let apiKey = Secrets.openWeatherAPIKey
+    private let apiKey = Secrets.openWeatherAPIKey
+    
     func getCurrentWeatherLink(cityName: String) -> URL? {
         let api = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)"
         
@@ -22,6 +24,12 @@ class OpenWeatherURLProvider: URLProvider {
     
     func getCurrentWeatherLinkForMultipleCities(citiesIDs: [String]) -> URL? {
         let api = "https://api.openweathermap.org/data/2.5/group?id=\(citiesIDs.joined(separator: ","))&units=metric&appid=\(apiKey)"
+        print(api)
+        return encodeURL(rawURL: api)
+    }
+    
+    func getWeatherPredictionLink(with coords: Coords) -> URL? {
+        let api = "https://api.openweathermap.org/data/2.5/onecall?lat=\(coords.lat)&lon=\(coords.lon)&exclude=current,minutely,hourly,alerts&appid=\(apiKey)&units=metric"
         
         return encodeURL(rawURL: api)
     }

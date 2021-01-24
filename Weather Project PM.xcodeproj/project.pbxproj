@@ -28,6 +28,11 @@
 		887E245C25BADECB00560B57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E245A25BADECB00560B57 /* Main.storyboard */; };
 		887E245E25BADECD00560B57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887E245D25BADECD00560B57 /* Assets.xcassets */; };
 		887E246125BADECD00560B57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887E245F25BADECD00560B57 /* LaunchScreen.storyboard */; };
+		88CE03C825BDC633002C11AF /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03C725BDC633002C11AF /* Prediction.swift */; };
+		88CE03CC25BDC9AE002C11AF /* ForecastCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03CB25BDC9AE002C11AF /* ForecastCollectionViewDataSource.swift */; };
+		88CE03D025BDCAA0002C11AF /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03CF25BDCAA0002C11AF /* ForecastCollectionViewCell.swift */; };
+		88CE03D425BDCB20002C11AF /* ForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CE03D325BDCB20002C11AF /* ForecastCollectionViewCell.xib */; };
+		88CE03D725BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CE03D625BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,11 @@
 		887E245D25BADECD00560B57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		887E246025BADECD00560B57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		887E246225BADECD00560B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88CE03C725BDC633002C11AF /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
+		88CE03CB25BDC9AE002C11AF /* ForecastCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		88CE03CF25BDCAA0002C11AF /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
+		88CE03D325BDCB20002C11AF /* ForecastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCollectionViewCell.xib; sourceTree = "<group>"; };
+		88CE03D625BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +97,7 @@
 		885EEB9225BC7D4600D2DE0A /* CityDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				88CE03CA25BDC99A002C11AF /* ForecastCollectionView */,
 				885EEB9325BC7D5800D2DE0A /* CityDetailViewController.swift */,
 			);
 			path = CityDetailViewController;
@@ -174,6 +185,7 @@
 			children = (
 				885EEB7B25BB5A8A00D2DE0A /* Weather.swift */,
 				885EEBA825BCD3C000D2DE0A /* Details.swift */,
+				88CE03C725BDC633002C11AF /* Prediction.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -208,6 +220,7 @@
 		887E246F25BAF1F100560B57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				88CE03CE25BDCA91002C11AF /* ForecastCollectionViewCell */,
 				885EEB9F25BCC1FD00D2DE0A /* DetailCollectionViewCell */,
 				885EEB7025BB566300D2DE0A /* CityCollectionViewCell */,
 				887E245A25BADECB00560B57 /* Main.storyboard */,
@@ -222,6 +235,24 @@
 				887E245825BADECB00560B57 /* CitiesViewController.swift */,
 			);
 			path = CitiesViewController;
+			sourceTree = "<group>";
+		};
+		88CE03CA25BDC99A002C11AF /* ForecastCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				88CE03CB25BDC9AE002C11AF /* ForecastCollectionViewDataSource.swift */,
+				88CE03D625BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift */,
+			);
+			path = ForecastCollectionView;
+			sourceTree = "<group>";
+		};
+		88CE03CE25BDCA91002C11AF /* ForecastCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				88CE03CF25BDCAA0002C11AF /* ForecastCollectionViewCell.swift */,
+				88CE03D325BDCB20002C11AF /* ForecastCollectionViewCell.xib */,
+			);
+			path = ForecastCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				887E246125BADECD00560B57 /* LaunchScreen.storyboard in Resources */,
+				88CE03D425BDCB20002C11AF /* ForecastCollectionViewCell.xib in Resources */,
 				887E245E25BADECD00560B57 /* Assets.xcassets in Resources */,
 				887E245C25BADECB00560B57 /* Main.storyboard in Resources */,
 				885EEB7625BB570C00D2DE0A /* CityCollectionViewCell.xib in Resources */,
@@ -299,16 +331,20 @@
 				887E245925BADECB00560B57 /* CitiesViewController.swift in Sources */,
 				885EEBB225BCD55300D2DE0A /* CustomDateFormatter.swift in Sources */,
 				885EEB8E25BC14CF00D2DE0A /* URLProvider.swift in Sources */,
+				88CE03D025BDCAA0002C11AF /* ForecastCollectionViewCell.swift in Sources */,
 				885EEB9925BC84AB00D2DE0A /* UIView.swift in Sources */,
 				885EEBA425BCC39600D2DE0A /* DetailCollectionViewCell.swift in Sources */,
 				885EEB8025BB5E3300D2DE0A /* Secrets.swift in Sources */,
 				885EEB7325BB567E00D2DE0A /* CityCollectionViewCell.swift in Sources */,
+				88CE03D725BDCE7B002C11AF /* ForecastCollectionViewDelegate.swift in Sources */,
+				88CE03C825BDC633002C11AF /* Prediction.swift in Sources */,
 				885EEBA925BCD3C000D2DE0A /* Details.swift in Sources */,
 				885EEB9425BC7D5800D2DE0A /* CityDetailViewController.swift in Sources */,
 				885EEBAD25BCD3F800D2DE0A /* TemperatureFormatter.swift in Sources */,
 				885EEB8425BB5F1200D2DE0A /* NetworkService.swift in Sources */,
 				887E245525BADECB00560B57 /* AppDelegate.swift in Sources */,
 				885EEB9D25BCB70A00D2DE0A /* DatabaseManager.swift in Sources */,
+				88CE03CC25BDC9AE002C11AF /* ForecastCollectionViewDataSource.swift in Sources */,
 				887E245725BADECB00560B57 /* SceneDelegate.swift in Sources */,
 				885EEB7C25BB5A8A00D2DE0A /* Weather.swift in Sources */,
 				885EEB8A25BB60BE00D2DE0A /* WeatherNetworkManager.swift in Sources */,

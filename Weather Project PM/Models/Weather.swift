@@ -18,6 +18,7 @@ struct WeatherModel: Codable {
     var weather: [Weather]
     var sys: WeatherMeta
     var wind: Wind
+    var coord: Coords
 }
 
 struct Weather: Codable {
@@ -91,4 +92,9 @@ struct Wind: Codable {
         case speed
         case degrees = "deg"
     }
+}
+
+struct Coords: Codable {
+    var lon: Float
+    var lat: Float
 }

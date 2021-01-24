@@ -10,23 +10,24 @@ import UIKit
 class CityCollectionViewCell: UICollectionViewCell {
     static let id = "CityCollectionViewCell"
     
-    @IBOutlet weak var backgroundImage: UIImageView?
     @IBOutlet weak var cityName: UILabel?
     @IBOutlet weak var temperature: UILabel?
+    @IBOutlet weak var timeLabel: UILabel?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    let tempFormatter = RoundTemperatureFormatter()
+    let hoursFormatter = HoursDateFormatter()
+    
+    func configure(with weather: WeatherModel) {
+        cityName?.text = weather.name
+        temperature?.text = tempFormatter.string(temp: weather.main.currentTemp)
+        timeLabel?.text = getRequestDate()
         
-        setUpViews()
+        addBottomBorder()
     }
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    func getRequestDate() -> String {
+        let date = Date()
         
-        setUpViews()
-    }
-    
-    private func setUpViews() {
-        
+        return hoursFormatter.string(from: date)
     }
 }
