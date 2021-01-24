@@ -10,10 +10,12 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let defaultCitiesIDs = ["703448", "709930"]
+        
+        UserDefaults.standard.set(defaultCitiesIDs, forKey: "citiesIDs")
+        
         return true
     }
 

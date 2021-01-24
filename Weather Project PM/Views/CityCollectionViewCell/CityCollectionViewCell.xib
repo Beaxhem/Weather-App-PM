@@ -14,40 +14,40 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rzH-lG-aYj">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVY-tQ-fZ9">
-                    <rect key="frame" x="20" y="28" width="52" height="27"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVY-tQ-fZ9">
+                    <rect key="frame" x="20" y="36" width="96" height="27"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3as-gP-hs0">
-                    <rect key="frame" x="368" y="23" width="26" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3as-gP-hs0">
+                    <rect key="frame" x="364.5" y="23.5" width="26" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4p-sS-VeB">
+                    <rect key="frame" x="20" y="15" width="38" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="rzH-lG-aYj" secondAttribute="bottom" id="JQy-ol-utT"/>
-                <constraint firstItem="rzH-lG-aYj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="URp-Xl-qAs"/>
-                <constraint firstAttribute="trailing" secondItem="rzH-lG-aYj" secondAttribute="trailing" id="dcF-x4-JGx"/>
-                <constraint firstItem="rzH-lG-aYj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zP7-Zn-FJg"/>
+                <constraint firstItem="GVY-tQ-fZ9" firstAttribute="top" secondItem="k4p-sS-VeB" secondAttribute="bottom" id="71s-I9-geV"/>
+                <constraint firstItem="GVY-tQ-fZ9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="7Bf-mz-pnn"/>
+                <constraint firstItem="3as-gP-hs0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mgr-Md-ibc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GVY-tQ-fZ9" secondAttribute="bottom" constant="20" id="RY8-uo-jf4"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3as-gP-hs0" secondAttribute="trailing" constant="23.5" id="U54-Ua-qM2"/>
+                <constraint firstItem="k4p-sS-VeB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="fWg-Hu-fFH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="backgroundImage" destination="rzH-lG-aYj" id="R6z-6D-hAa"/>
                 <outlet property="cityName" destination="GVY-tQ-fZ9" id="d7o-ah-ieL"/>
                 <outlet property="temperature" destination="3as-gP-hs0" id="np4-vo-mRu"/>
+                <outlet property="timeLabel" destination="k4p-sS-VeB" id="i8D-ah-FSa"/>
             </connections>
             <point key="canvasLocation" x="111.59420289855073" y="-176.45089285714286"/>
         </view>
