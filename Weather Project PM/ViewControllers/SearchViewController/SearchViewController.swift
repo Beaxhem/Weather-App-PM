@@ -43,7 +43,6 @@ class SearchViewController: UIViewController {
             case .failure(let error):
                 print(error)
             case .success(let request):
-                print("Request")
                 self?.resultsDataSource.results = [request]
                 self?.resultsTableView?.reloadData()
             }

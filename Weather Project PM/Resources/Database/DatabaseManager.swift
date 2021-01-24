@@ -22,7 +22,6 @@ class DatabaseManager {
             case .failure(let error):
                 print(error)
             case .success(let result):
-                print(result.count)
                 self?.weatherData = result
                 completion?()
             }
